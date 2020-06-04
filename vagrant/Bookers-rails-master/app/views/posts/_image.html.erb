@@ -1,0 +1,5 @@
+<% if user.image != nil %>
+<%= attachment_image_tag user, :image, :fill, 50, 50, format: 'jpeg' %>
+<% else %>
+<%= image_tag 'sample_img.gif', style: "height: 50px" %>
+<% end %>
