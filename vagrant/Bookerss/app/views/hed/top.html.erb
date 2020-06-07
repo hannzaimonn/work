@@ -1,0 +1,28 @@
+<header id="header" class="">
+	<%= render 'hed/bar', hed: @hed %>
+</header>
+<head>
+	<% flash.each do |key, value| %>
+     <%= content_tag(:div, value, class: "#{key}") %>
+     <% end %>
+	<title>Bookers</title>
+</head>
+<body>
+
+<div class="top-text">
+	<h1>welcome to<span class="glyphicon glyphicon-book" aria-hidden="true">Bookers</span>！！</h1>
+    <p>In<span class="glyphicon glyphicon-book" aria-hidden="true">Bookers</span><br>
+	you can share and exchange your opinions , inpressions , and emotions<br>
+	about various books!
+    </p>
+</div>
+
+<div class="regi">
+   <p>
+	<%= link_to 'log in', new_user_session_path, class: "btn btn-primary" %><br>
+	<%= link_to 'Sign Up', new_user_registration_path,  class: "btn btn-success" %><br>
+   </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<head>
+  <%= render 'hed/bar', hed: @hed %>
+</head>
+<body>
+<br>
+<br>
+<br>
+ <div class="regi">
+
+<h1>Editing Book</h1>
+<% if @book.errors.any? %>
+<h4><%= @book.errors.count %>errors prohibited this book from being saved:</h4>
+<ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+</ul>
+<% end %>
+<%= form_for(@book) do |f| %>
+  <p>Title</p>
+  <%= f.text_field :title , class: "edit-title"%>
+  <p>Body</p>
+  <%= f.text_area :body , class: "edit-body"%>
+  <br>
+  <br>
+  <%= f.submit "Update Book",  class: "btn btn-primary" %>
+<% end %>
+
+<p>
+  <%= link_to "Show", book_path %>
+  |
+  <%= link_to "Back", books_path %>
+</p>
+</div>
+</body>
+</html>

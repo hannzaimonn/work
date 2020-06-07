@@ -1,0 +1,73 @@
+<head>
+	<%= render 'hed/bar', hed: @hed %>
+</head>
+<body>
+post
+<div class="flash">
+
+</div>
+
+
+<div class="container">
+ <div class="row">
+ 	<div class="col-xs-3" style="background-color: white">
+ 		<h2>User info</h2>
+ 		<%= attachment_image_tag current_user, :profile_image, :fill, 150, 150, format: 'jpeg' %>
+ 		<table>
+
+ 			<tbody>
+ 				 <tr>
+ 					<td>name</td>
+ 					<td><%= current_user.name %></td>
+ 				 </tr>
+ 				 <tr>
+ 					<td>Introduction</td>
+ 					<td><%= current_user.introduction %></td>
+ 				 </tr>
+ 			</tbody>
+ 		</table>
+
+<%= link_to(edit_user_path(current_user.id), class:  "btn btn-default") do %>
+		<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+<% end -%>
+
+<h1>New book</h1>
+
+<%= form_for(@book) do |f| %>
+
+  <p>Title</p>
+  <%= f.text_field :title , class: "edit-title"%>
+
+  <p>Body</p>
+  <%= f.text_area :body, class: "edit-body"%>
+  <br>
+  <%= f.submit 'Create Book', class: "btn btn-primary" %>
+
+<% end %>
+
+ 	</div>
+
+<div class="col-lg-8">
+ <h1>Book detail</h1>
+
+	<table class="table table-striped">
+		<thead>
+		</thead>
+		<tbody>
+			<% @books.each do |book| %>
+
+			<tr class="new-table">
+				<td><span><%= book.title %></span></td>
+				<td><span><%= book.body %></span></td>
+				<td><span><%= link_to "edit", edit_book_path(book) %></span></td>
+				<td><span><%= link_to "destroy", book_path(book), method: :delete, "data-confirm" =>"Are you sure？" %></span></td>
+			</tr>
+			<% end %>
+
+		</tbody>
+	</table>
+</div>
+
+
+</body>
+</html>

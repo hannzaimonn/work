@@ -16,7 +16,7 @@ class BooksController < ApplicationController
     @books = Book.all
   	@book = Book.new(books_params)
     if @book.save
-      flash[:complete] = "Book was successfully created."
+      flash[:complete] = "You have creatad book successfully."
       redirect_to book_path(@book.id)
     else
       render action: :index
@@ -44,6 +44,12 @@ class BooksController < ApplicationController
   def edit
   	@book = Book.find(params[:id])
   end
+  def correct_user
+  @micropost = current_user.microposts.find_by(id: params[:id])
+    unless @micropost
+      redirect_to root_url
+    end
+ end
 
   private
     def books_params
