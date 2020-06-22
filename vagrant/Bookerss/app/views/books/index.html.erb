@@ -60,7 +60,7 @@
 
 			<tr class="new-table">
 				<td><%= link_to  "/users/#{book.user.id}" do %>
-					<%= attachment_image_tag book.user, :profile_image, format: 'jpeg',class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "35x35" %>
+					<%= attachment_image_tag book.user_id, :profile_image, format: 'jpeg',class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "35x35" %>
 				    <% end %>
 					</td>
 				<td><span><%= link_to book.title, "/books/#{book.id}"%></span></td>
