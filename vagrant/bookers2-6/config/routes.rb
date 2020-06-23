@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
   resources :users,only: [:show,:index,:edit,:update]
   resources :books, shallow: true do
-    resources :book_comments, only: %i[create edit update destroy]
+    resources :book_comments, only: [:create]
   end
+  resources :book_comments, only: [:destroy]
 
 end

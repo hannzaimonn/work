@@ -13,13 +13,11 @@
 ActiveRecord::Schema.define(version: 2020_06_23_044057) do
 
   create_table "book_comments", force: :cascade do |t|
-    t.text "body", null: false
-    t.integer "user_id", null: false
-    t.integer "book_id", null: false
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_book_comments_on_book_id"
-    t.index ["user_id"], name: "index_book_comments_on_user_id"
   end
 
   create_table "books", force: :cascade do |t|

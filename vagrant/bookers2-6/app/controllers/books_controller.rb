@@ -5,8 +5,8 @@ class BooksController < ApplicationController
   def show
   	@book = Book.find(params[:id])
     @post = Book.new
-    @comment = BookComment.new
-    @comments = @book.book_comments.includes(:user).where(book_id: @book.id)
+    @book_comment = BookComment.new
+    @book_comments = @book.book_comments.order(created_at: :desc)
   end
 
   def index

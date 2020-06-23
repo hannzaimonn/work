@@ -1,30 +1,22 @@
 class BookCommentsController < ApplicationController
-  before_action :set_comment, only: %i[destroy]
 
   def create
-  	@comment = current_user.comments.build(comment_params)
-    @comment.save!
+    @book = Book.find(params[:book_id])
+  	@book_comment = @book.book_comments.build(comment_params)
+    @book_comment.user_id =current_user.id
+    @book_comment.save
+    render :index
   end
 
-  def edit
-  end
-
-  def update
-  end
 
   def destroy
-  	 @comment.destroy!
+    @book_comment = BookComment.find(params[:id])
+  	@book_comment.destroy
+    render :index
   end
 
-    private
-
-  def set_comment
-    @comment = BookComment.find_by(id: params[:id])
-  end
-
+private
   def comment_params
-    params.require(:comment)
-          .permit(:body)
-          .merge(book_id: params[:book_id])
+    params.require(:book_comment).permit(:comment, :book_id, :user_id)
   end
 end
