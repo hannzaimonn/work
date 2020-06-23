@@ -29,6 +29,18 @@
 					<% end %>
 				</tr>
 			</table>
+			<div class="container pt-5">
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+      <%= form_with(model: [@book, @comment], remote: true) do |f| %>
+        <%= f.label :body, t('.book_comment')%>
+        <%= f.text_area :body, class: "form-control mb-3", placeholder: "コメント" , rows: "4" %>
+        <%= f.submit "送信", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <%= render 'book_comments/comment_area', comments: @comments %>
+</div>
 
 	</div>
 </div>
